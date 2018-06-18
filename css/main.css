@@ -1,4 +1,51 @@
 /* Memory Game Project CSS file */
+.container {
+    width: 600px;
+    max-width: 100%;
+    margin: auto;
+    border: dotted 1px black;
+}
+
+.header {
+    text-align: center;
+    width: 100%;
+}
+
+.rules {
+    text-align: center;
+    width: 100%;
+}
+
+.deck {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 400px;
+    max-width: 100%;
+    padding: 1%;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.card {
+    /* display: inline-table; */
+    flex-grow: 1;
+    flex-basis: 20%;
+    border: dotted 1px gray;
+}
+
+.card:hover {
+    cursor: pointer;
+    background-color: aquamarine;
+}
+
+.clicked {
+    background-color: blueviolet;
+}
 
 
 /* TODO - add card flip animations */

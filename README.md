@@ -6,7 +6,7 @@ _TODO add summary here_
 
 _TODO add quickstart instructions here_
 
-# Udacity's suggested development order
+# **Follow this:** Udacity's suggested development order
 
 Start by building a very simple grid of cards.
 
