@@ -35,7 +35,10 @@ ul {
     /* display: inline-table; */
     flex-grow: 1;
     flex-basis: 20%;
+    margin: 1px;
     border: dotted 1px gray;
+    background-color: blue;
+    text-align: center;
 }
 
 .card:hover {
@@ -44,7 +47,11 @@ ul {
 }
 
 .clicked {
-    background-color: blueviolet;
+    background-color: whitesmoke;
+}
+
+.matched {
+    background-color: green;
 }
 
 
