@@ -35,10 +35,17 @@ ul {
     /* display: inline-table; */
     flex-grow: 1;
     flex-basis: 20%;
+    height: 100px;
+    line-height: 100px;
     margin: 1px;
     border: dotted 1px gray;
     background-color: blue;
     text-align: center;
+    font-size: 3em;
+    /* for hiding the text */
+    text-indent: -9999px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .card:hover {
@@ -48,10 +55,18 @@ ul {
 
 .clicked {
     background-color: whitesmoke;
+    /* for showing the text */
+    text-indent: 0px;
+    white-space: default;
+    overflow: default;
 }
 
 .matched {
     background-color: green;
+    /* for showing the text */
+    text-indent: 0px;
+    white-space: default;
+    overflow: default;
 }
 
 
