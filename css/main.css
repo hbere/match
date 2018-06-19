@@ -9,7 +9,8 @@ body {
     margin: auto;
     border: dotted .5px black;
     border-radius: 10px;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+    background: linear-gradient(160deg, #e7ebff 0%, cornflowerblue 100%);
     font-family: sans-serif;
 }
 
@@ -46,7 +47,7 @@ ul {
     line-height: 80px;
     margin: 1px;
     border: dotted 1px gray;
-    background-color: blue;
+    background-color: #444;
     text-align: center;
     font-size: 3em;
     border-radius: 10px;
