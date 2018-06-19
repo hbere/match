@@ -84,7 +84,7 @@ function flipNonMatches() {
     for (let card of cardsClicked) {
       setTimeout(function() {
         card.classList.remove("clicked");
-      }, 800);
+      }, 500);
     }
   }
   clickState = 0;
@@ -111,6 +111,7 @@ function flipCardsFacedown() {
   let cards = document.querySelectorAll(".card");
   for (let card of cards) {
     card.classList.remove("clicked");
+    card.classList.remove("matched");
   }
 }
 
