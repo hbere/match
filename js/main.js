@@ -35,22 +35,26 @@ function addCardEventListeners() {
 }
 
 function flipCard() {
+  // Flip over card as appropriate
   if (clickState === 0) {
     // First card clicked
-    if (this.classList.contains("clicked") === false && this.classList.contains("matched") === false) {
+    if (
+      this.classList.contains("clicked") === false &&
+      this.classList.contains("matched") === false
+    ) {
       this.classList.toggle("clicked");
       clickState++;
       console.log(`Clickstate now ${clickState}.`);
     }
   } else if (clickState === 1) {
     // Second card clicked
-    // TODO add logic for waiting & turning blue again if no match
-    // TODO add logic for waiting & turning green if match
-    if (this.classList.contains("clicked") === false && this.classList.contains("matched") === false) {
+    if (
+      this.classList.contains("clicked") === false &&
+      this.classList.contains("matched") === false
+    ) {
       this.classList.toggle("clicked");
       clickState++;
       console.log(`Clickstate now ${clickState}.`);
-      // TODO add logic to count total # matches and restarting the game if all matches found
       flipNonMatches();
       guessCounter++;
       document.querySelector("#moves").textContent = guessCounter;
@@ -58,6 +62,17 @@ function flipCard() {
   } else {
     // Error handling
     console.log(`Error: clickstate of ${clickState} or greater.`);
+  }
+  // Check if game is complete
+  if (gameComplete() === true) {
+    document.getElementById("gameComplete").innerHTML =
+      "<strong>Congratulations, you won!!</strong>";
+    if (
+      guessCounter < document.getElementById("personalBest").textContent ||
+      document.getElementById("personalBest").textContent == "NA"
+    ) {
+      document.getElementById("personalBest").textContent = guessCounter;
+    }
   }
 }
 
@@ -105,7 +120,8 @@ function newGame() {
   flipCardsFacedown();
   clickState = 0;
   guessCounter = 0;
-  document.querySelector("#moves").textContent = guessCounter;
+  document.getElementById("moves").textContent = guessCounter;
+  document.getElementById("gameComplete").innerHTML = "";
 }
 
 function flipCardsFacedown() {
