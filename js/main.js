@@ -20,6 +20,8 @@ let deck = [
 let clickState = 0;
 let guessCounter = 0;
 
+// TODO hide the button until it is ready to call a new game
+
 // Initialize game after DOM loads
 document.addEventListener("DOMContentLoaded", function() {
   addButtonClickEventListener("buttonNewGame", newGame);
