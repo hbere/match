@@ -17,6 +17,7 @@ let deck = [
   "H",
   "H"
 ];
+let clickState = 0;
 
 // Event listeners for DOM
 document.addEventListener("DOMContentLoaded", function() {

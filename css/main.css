@@ -42,10 +42,8 @@ ul {
     background-color: blue;
     text-align: center;
     font-size: 3em;
-    /* for hiding the text */
+    /* TODO find more performant way to hide the text */
     text-indent: -9999px;
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 .card:hover {
@@ -57,16 +55,12 @@ ul {
     background-color: whitesmoke;
     /* for showing the text */
     text-indent: 0px;
-    white-space: default;
-    overflow: default;
 }
 
 .matched {
     background-color: green;
     /* for showing the text */
     text-indent: 0px;
-    white-space: default;
-    overflow: default;
 }
 
 
