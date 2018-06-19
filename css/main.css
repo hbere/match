@@ -1,6 +1,6 @@
 /* Memory Game Project CSS file */
 .container {
-    width: 600px;
+    width: 500px;
     max-width: 100%;
     margin: auto;
     border: dotted 1px black;
@@ -21,7 +21,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    height: 400px;
+    height: 320px;
     max-width: 100%;
     padding: 1%;
 }
@@ -35,8 +35,8 @@ ul {
     /* display: inline-table; */
     flex-grow: 1;
     flex-basis: 20%;
-    height: 100px;
-    line-height: 100px;
+    height: 80px;
+    line-height: 80px;
     margin: 1px;
     border: dotted 1px gray;
     background-color: blue;

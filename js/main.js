@@ -57,7 +57,7 @@ function flipCard() {
       console.log(`Clickstate now ${clickState}.`);
       flipNonMatches();
       guessCounter++;
-      document.querySelector("#moves").textContent = guessCounter;
+      document.getElementById("moves").innerHTML = `<strong>${guessCounter}</strong>`;
     }
   } else {
     // Error handling
