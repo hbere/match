@@ -74,6 +74,7 @@ function flipCard() {
       document.getElementById("personalBest").textContent = guessCounter;
     }
   }
+  return null;
 }
 
 function flipNonMatches() {
@@ -104,12 +105,14 @@ function flipNonMatches() {
     }
   }
   clickState = 0;
+  return null;
 }
 
 function addButtonClickEventListener(buttonID, myFunctionName) {
   // Adds event listener calling myFunctionName every time buttonID is clicked
   let myButton = document.querySelector(`#${buttonID}`);
   myButton.addEventListener("click", myFunctionName);
+  return null;
 }
 
 function newGame() {
@@ -122,6 +125,7 @@ function newGame() {
   guessCounter = 0;
   document.getElementById("moves").textContent = guessCounter;
   document.getElementById("gameComplete").textContent = "";
+  return null;
 }
 
 function flipCardsFacedown() {
@@ -131,6 +135,7 @@ function flipCardsFacedown() {
     card.classList.remove("clicked");
     card.classList.remove("matched");
   }
+  return null;
 }
 
 function deal(array) {
@@ -141,36 +146,39 @@ function deal(array) {
     card.textContent = array[i];
     i++;
   }
+  return null;
 }
 
 function shuffle(array) {
-  // Performs as Fisher-Yates shuffle
+  // Performs a Fisher-Yates shuffle
   // More info @ https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
   let maxIndex, randIndex;
-  // Shuffle
+  // Shuffle the cards
   for (let [index] of array.entries()) {
     maxIndex = array.length - 1;
     randIndex = getRandomInt(0, maxIndex);
     [array[randIndex], array[index]] = [array[index], array[randIndex]];
   }
-  // Return shuffled array
-  return array;
+  // Return the shuffled array
+  return null;
 }
 
 function getRandomInt(min, max) {
-  // Return 1 random integer between min and max
+  // Returns 1 random integer between min and max, inclusive
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
 function gameComplete() {
-  // Check if game is over
+  // Checks if game is over
   let cards = document.querySelectorAll(".card");
   let matches = document.querySelectorAll(".matched");
   if (cards.length === matches.length) {
+    // Return true if number of cards equals number of matches
     return true;
   } else {
+    // Else return false
     return false;
   }
 }
