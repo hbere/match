@@ -57,7 +57,7 @@ function flipCard() {
       console.log(`Clickstate now ${clickState}.`);
       flipNonMatches();
       guessCounter++;
-      document.getElementById("moves").innerHTML = `<strong>${guessCounter}</strong>`;
+      document.getElementById("moves").textContent = guessCounter;
     }
   } else {
     // Error handling
@@ -65,8 +65,8 @@ function flipCard() {
   }
   // Check if game is complete
   if (gameComplete() === true) {
-    document.getElementById("gameComplete").innerHTML =
-      "<strong>Congratulations, you won!!</strong>";
+    document.getElementById("gameComplete").textContent =
+      "Congratulations, you won!!";
     if (
       guessCounter < document.getElementById("personalBest").textContent ||
       document.getElementById("personalBest").textContent == "NA"
@@ -121,7 +121,7 @@ function newGame() {
   clickState = 0;
   guessCounter = 0;
   document.getElementById("moves").textContent = guessCounter;
-  document.getElementById("gameComplete").innerHTML = "";
+  document.getElementById("gameComplete").textContent = "";
 }
 
 function flipCardsFacedown() {
