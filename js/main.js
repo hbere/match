@@ -1,21 +1,21 @@
 // Memory Game Project JavaScript file
 let deck = [
-  "A",
-  "A",
-  "B",
-  "B",
-  "C",
-  "C",
-  "D",
-  "D",
-  "E",
-  "E",
-  "F",
-  "F",
-  "G",
-  "G",
-  "H",
-  "H"
+  "♣",
+  "♣",
+  "♦",
+  "♦",
+  "♥",
+  "♥",
+  "♠",
+  "♠",
+  "♤",
+  "♤",
+  "♡",
+  "♡",
+  "♢",
+  "♢",
+  "♧",
+  "♧"
 ];
 let clickState = 0;
 let guessCounter = 0;
