@@ -105,6 +105,7 @@ function newGame() {
   flipCardsFacedown();
   clickState = 0;
   guessCounter = 0;
+  document.querySelector("#moves").textContent = guessCounter;
 }
 
 function flipCardsFacedown() {
@@ -141,8 +142,19 @@ function shuffle(array) {
 }
 
 function getRandomInt(min, max) {
-  // return 1 random integer between min and max
+  // Return 1 random integer between min and max
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+function gameComplete() {
+  // Check if game is over
+  let cards = document.querySelectorAll(".card");
+  let matches = document.querySelectorAll(".matched");
+  if (cards.length === matches.length) {
+    return true;
+  } else {
+    return false;
+  }
 }
