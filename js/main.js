@@ -27,9 +27,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function addCardEventListeners() {
-  // Add event listener to each card;
+  // Add event listener to each card
   let cards = document.querySelectorAll(".card");
   for (let card of cards) {
+    // TODO add code to ensure duplicate event listeners not added
     card.addEventListener("click", flipCard);
   }
 }
@@ -44,7 +45,6 @@ function flipCard() {
     ) {
       this.classList.toggle("clicked");
       clickState++;
-      console.log(`Clickstate now ${clickState}.`);
     }
   } else if (clickState === 1) {
     // Second card clicked
@@ -54,7 +54,6 @@ function flipCard() {
     ) {
       this.classList.toggle("clicked");
       clickState++;
-      console.log(`Clickstate now ${clickState}.`);
       flipNonMatches();
       guessCounter++;
       document.getElementById("moves").textContent = guessCounter;
