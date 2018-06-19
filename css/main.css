@@ -63,6 +63,22 @@ ul {
     text-indent: 0px;
 }
 
+.matched:hover {
+    cursor: default;
+    background-color: green;
+}
+
+button {
+    min-width: 48px;
+    min-height: 48px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: gray;
+}
+
 /* TODO - add card flip animations */
 
 

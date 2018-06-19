@@ -53,6 +53,7 @@ function flipCard() {
       // TODO add logic to count total # matches and restarting the game if all matches found
       flipNonMatches();
       guessCounter++;
+      document.querySelector("#moves").textContent = guessCounter;
     }
   } else {
     // Error handling
