@@ -22,6 +22,7 @@ let deck = [
 document.addEventListener("DOMContentLoaded", function() {
   // console.log("the DOM is ready to be interacted with!");
   addCardEventListeners();
+  addButtonClickEventListener("buttonNewGame", newGame)
   console.log(deck);
   shuffle(deck);
   console.log(deck);
@@ -39,6 +40,27 @@ function addCardEventListeners() {
       // TODO add logic for waiting & turning green if match
       // TODO add logic to count total # matches and restarting the game if all matches found
     });
+  }
+}
+
+function addButtonClickEventListener(buttonID, myFunctionName) {
+  // Adds event listener calling myFunctionName every time buttonID is clicked
+  let myButton = document.querySelector(`#${buttonID}`);
+  myButton.addEventListener("click", myFunctionName);
+}
+
+function newGame() {
+  // Calls all functions needed to start a new game
+  shuffle(deck);
+  deal(deck);
+  flipCardsFacedown();
+}
+
+function flipCardsFacedown() {
+  // Flips all cards facedown (by removing the class "clicked")
+  let cards = document.querySelectorAll(".card");
+  for (let card of cards) {
+    card.classList.remove("clicked");
   }
 }
 
