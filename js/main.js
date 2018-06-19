@@ -24,10 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // console.log("the DOM is ready to be interacted with!");
   addCardEventListeners();
   addButtonClickEventListener("buttonNewGame", newGame)
-  console.log(deck);
-  shuffle(deck);
-  console.log(deck);
-  deal(deck);
+  newGame();
 });
 
 // Event listeners for cards
