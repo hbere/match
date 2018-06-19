@@ -36,22 +36,17 @@ function addCardEventListeners() {
 }
 
 function flipCard() {
-  // Flip over card as appropriate
-  if (clickState === 0) {
-    // First card clicked
-    if (
-      this.classList.contains("clicked") === false &&
-      this.classList.contains("matched") === false
-    ) {
+  // Check if card is still facedown
+  if (
+    this.classList.contains("clicked") === false &&
+    this.classList.contains("matched") === false
+  ) {
+    if (clickState === 0) {
+      // First facedown card clicked
       this.classList.toggle("clicked");
       clickState++;
-    }
-  } else if (clickState === 1) {
-    // Second card clicked
-    if (
-      this.classList.contains("clicked") === false &&
-      this.classList.contains("matched") === false
-    ) {
+    } else if (clickState === 1) {
+      // Second facedown card clicked
       this.classList.toggle("clicked");
       clickState++;
       flipNonMatches();
@@ -119,7 +114,7 @@ function newGame() {
   addCardEventListeners();
   shuffle(deck);
   deal(deck);
-  flipCardsFacedown();
+  flipAllCardsFacedown();
   clickState = 0;
   guessCounter = 0;
   document.getElementById("moves").textContent = guessCounter;
@@ -127,7 +122,7 @@ function newGame() {
   return null;
 }
 
-function flipCardsFacedown() {
+function flipAllCardsFacedown() {
   // Flips all cards facedown (by removing the class "clicked")
   let cards = document.querySelectorAll(".card");
   for (let card of cards) {
