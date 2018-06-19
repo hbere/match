@@ -81,6 +81,7 @@ button:hover {
 
 .strong {
     font-weight: bold;
+    color: darkslategray;
 }
 
 /* TODO - add card flip animations */
