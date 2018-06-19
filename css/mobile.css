@@ -1,2 +1,6 @@
 /* Memory Game Project CSS file for small screens */
 
+button {
+    min-width: 48px;
+    min-height: 48px;
+}
