@@ -18,27 +18,76 @@ let deck = [
   "H"
 ];
 let clickState = 0;
+let guessCounter = 0;
 
-// Event listeners for DOM
+// Initialize game after DOM loads
 document.addEventListener("DOMContentLoaded", function() {
-  // console.log("the DOM is ready to be interacted with!");
-  addCardEventListeners();
-  addButtonClickEventListener("buttonNewGame", newGame)
+  addButtonClickEventListener("buttonNewGame", newGame);
   newGame();
 });
 
-// Event listeners for cards
 function addCardEventListeners() {
+  // Add event listener to each card;
   let cards = document.querySelectorAll(".card");
   for (let card of cards) {
-    card.addEventListener("click", function clicked() {
-      console.log(`A card was clicked with text == ${card.textContent}`);
-      card.classList.toggle("clicked");
-      // TODO add logic for waiting & turning blue again if no match
-      // TODO add logic for waiting & turning green if match
-      // TODO add logic to count total # matches and restarting the game if all matches found
-    });
+    card.addEventListener("click", flipCard);
   }
+}
+
+function flipCard() {
+  if (clickState === 0) {
+    // First card clicked
+    if (this.classList.contains("clicked") === false && this.classList.contains("matched") === false) {
+      this.classList.toggle("clicked");
+      clickState++;
+      console.log(`Clickstate now ${clickState}.`);
+    }
+  } else if (clickState === 1) {
+    // Second card clicked
+    // TODO add logic for waiting & turning blue again if no match
+    // TODO add logic for waiting & turning green if match
+    if (this.classList.contains("clicked") === false && this.classList.contains("matched") === false) {
+      this.classList.toggle("clicked");
+      clickState++;
+      console.log(`Clickstate now ${clickState}.`);
+      // TODO add logic to count total # matches and restarting the game if all matches found
+      flipNonMatches();
+      guessCounter++;
+    }
+  } else {
+    // Error handling
+    console.log(`Error: clickstate of ${clickState} or greater.`);
+  }
+}
+
+function flipNonMatches() {
+  // Add event listener to each card;
+  let cardsClicked = document.querySelectorAll(".clicked");
+  console.log(cardsClicked);
+  let tempValues = [],
+    match;
+  // Get list of matched numbers
+  for (let card of cardsClicked) {
+    tempValues.push(card.textContent);
+  }
+  // Flip non-matches facedown
+  match = tempValues[0] === tempValues[1];
+  if (match) {
+    // If match
+    for (let card of cardsClicked) {
+      card.classList.remove("clicked");
+      card.classList.add("matched");
+      card.removeEventListener("click", flipCard);
+    }
+  } else {
+    // If not a match
+    for (let card of cardsClicked) {
+      setTimeout(function() {
+        card.classList.remove("clicked");
+      }, 800);
+    }
+  }
+  clickState = 0;
 }
 
 function addButtonClickEventListener(buttonID, myFunctionName) {
@@ -49,9 +98,12 @@ function addButtonClickEventListener(buttonID, myFunctionName) {
 
 function newGame() {
   // Calls all functions needed to start a new game
+  addCardEventListeners();
   shuffle(deck);
   deal(deck);
   flipCardsFacedown();
+  clickState = 0;
+  guessCounter = 0;
 }
 
 function flipCardsFacedown() {
