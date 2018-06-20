@@ -155,3 +155,7 @@ button:hover {
 #buttonReset:hover {
   background-color: cornflowerblue;
 }
+
+.fontSize1em {
+  font-size: 1em;
+}
