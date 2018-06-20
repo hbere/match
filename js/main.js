@@ -186,9 +186,7 @@ function flipAllCardsFacedown() {
   // Flips all cards facedown (by removing the class "clicked")
   let cards = document.querySelectorAll(".card");
   for (let card of cards) {
-    card.classList.remove("clicked");
-    card.classList.remove("matched");
-    card.classList.remove("gameWon");
+    card.classList.remove("clicked", "matched", "gameWon");
   }
   document.querySelector(".congratulations").classList.add("displayNone");
 }
