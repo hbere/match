@@ -198,8 +198,6 @@ function shuffle(array) {
     randIndex = getRandomInt(0, maxIndex);
     [array[randIndex], array[index]] = [array[index], array[randIndex]];
   }
-  // Return the shuffled array
-  return array;
 }
 
 function getRandomInt(min, max) {
