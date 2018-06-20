@@ -154,7 +154,8 @@ function newGame() {
   deal(deck);
   flipAllCardsFacedown();
   clickState = 0;
-  stars = "★★★"
+  stars = "★★★";
+  document.getElementById("stars").textContent = stars;
   guessCounter = 0;
   document.getElementById("moves").textContent = guessCounter;
   document.getElementById("timer").textContent = "0:00";
