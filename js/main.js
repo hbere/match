@@ -12,6 +12,10 @@ let timer,
 
 // Initialize game after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
+  // Update copyright year
+  let today = new Date();
+  document.getElementById("thisYear").textContent = today.getUTCFullYear();
+  // Start game
   populateDeck();
   addButtonClickEventListener("buttonNewGame", newGame);
   addButtonClickEventListener("buttonReset", newGame);
