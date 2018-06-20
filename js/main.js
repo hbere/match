@@ -1,22 +1,8 @@
 // Memory Game Project JavaScript file
-let deck = [
-  "♣",
-  "♣",
-  "♦",
-  "♦",
-  "♥",
-  "♥",
-  "♠",
-  "♠",
-  "♤",
-  "♤",
-  "♡",
-  "♡",
-  "♢",
-  "♢",
-  "♧",
-  "♧"
-];
+
+// Declare variables
+let cardFaces = ["♣", "♦", "♥", "♠", "♤", "♡", "♢", "♧"]; // Choose exactly 8
+let deck = []; // Populates on DOM initialization
 let clickState = 0;
 let stars = "★★★";
 let guessCounter = 0;
@@ -25,7 +11,8 @@ let timer,
   timerSeconds = 0;
 
 // Initialize game after DOM loads
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
+  populateDeck();
   addButtonClickEventListener("buttonNewGame", newGame);
   addButtonClickEventListener("buttonReset", newGame);
   newGame();
@@ -83,7 +70,7 @@ function flipCard() {
     document.querySelector(".congratulations").classList.remove("displayNone");
     // Celebratory animation
     for (let card of cards) {
-      setTimeout(function() {
+      setTimeout(() => {
         card.classList.add("gameWon");
         card.classList.remove("matched");
       }, 300);
@@ -131,7 +118,7 @@ function flipNonMatches() {
   } else {
     // If not a match
     for (let card of cardsClicked) {
-      setTimeout(function() {
+      setTimeout(() => {
         card.classList.remove("clicked");
       }, 500);
     }
@@ -165,7 +152,7 @@ function newGame() {
 function startTimer() {
   // Starts the timer
   let minutesShown, secondsShown;
-  timer = setInterval(function timerInterval() {
+  timer = setInterval(() => {
     timerSeconds++;
     minutesShown = parseInt(timerSeconds / 60, 10);
     secondsShown = timerSeconds % 60;
@@ -232,5 +219,15 @@ function gameComplete() {
   } else {
     // Else return false
     return false;
+  }
+}
+
+function populateDeck() {
+  deck = cardFaces.concat(cardFaces);
+  // Error handling
+  if (cardFaces.length !== 8) {
+    console.log(
+      "Error: cardFaces must contain exactly 8 card types. Go to main.js and ensure that this is so."
+    );
   }
 }
