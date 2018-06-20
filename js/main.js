@@ -31,6 +31,8 @@ function addCardEventListeners() {
   }
 }
 
+// TODO shrink the size of this function; split into smaller, more maintainable pieces
+
 function flipCard() {
   let cards = document.querySelectorAll(".card");
   // Check if card is still facedown
