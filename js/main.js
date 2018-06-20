@@ -26,6 +26,7 @@ let timer, timerSecondsBest = 99999, timerSeconds = 0;
 // Initialize game after DOM loads
 document.addEventListener("DOMContentLoaded", function() {
   addButtonClickEventListener("buttonNewGame", newGame);
+  addButtonClickEventListener("buttonRestart", newGame);
   newGame();
 });
 
@@ -128,6 +129,8 @@ function addButtonClickEventListener(buttonID, myFunctionName) {
 }
 
 function newGame() {
+  // Ensure timer is stopped
+  stopTimer();
   // Calls all functions needed to start a new game
   addCardEventListeners();
   shuffle(deck);
