@@ -4,3 +4,7 @@ button {
     min-width: 48px;
     min-height: 48px;
 }
+
+#buttonReset {
+    min-width: 48px;
+}

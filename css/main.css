@@ -17,11 +17,37 @@ body {
 .header {
   text-align: center;
   width: 100%;
+  color: #222;
 }
 
 .rules {
   text-align: center;
   width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.scoreHeader {
+  flex-grow: 1;
+  flex-basis: 20%;
+  color: #222;
+}
+
+.score {
+  flex-grow: 1;
+  flex-basis: 20%;
+  color: #333;
 }
 
 .deck {
@@ -32,11 +58,6 @@ body {
   height: 320px;
   max-width: 100%;
   padding: 1%;
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 0;
 }
 
 .card {
@@ -77,11 +98,6 @@ ul {
   background-color: green;
 }
 
-.scoreboard {
-  font-weight: bold;
-  color: darkslategray;
-}
-
 /* TODO add card flip animations */
 /* TODO add styles and animations for winning the game */
 
@@ -105,7 +121,7 @@ ul {
   text-align: center;
   width: 100%;
   position: relative;
-  bottom: -150px;
+  bottom: -105px;
   height: 0px;
 }
 
@@ -126,4 +142,16 @@ button {
 
 button:hover {
   background-color: salmon;
+}
+
+#buttonReset {
+  min-width: 30px;
+  background-color: transparent;
+  font-style: normal;
+  padding: 0px;
+  font-size: 1em;
+}
+
+#buttonReset:hover {
+  background-color: cornflowerblue;
 }

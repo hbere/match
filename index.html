@@ -16,36 +16,28 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>Memory Game</h1>
+            <h2>Memory Game <button id="buttonReset">↻</button></h2>
         </header>
         <main>
             <section class="rules">
-                <ul>
-                    <li>Star Rating: 
-                        <span id="stars">★★★</span>
-                    </li>
-                    <li>Moves:
-                        <span id="moves" class="scoreboard">0</span>
-                    </li>
-                    <li>Best:
-                        <span id="movesBest" class="scoreboard">NA</span>
-                    </li>
-                    <li>Timer:
-                        <span id="timer" class="scoreboard">0:00</span>
-                    </li>
-                    <li>Best:
-                        <span id="timerBest" class="scoreboard">NA</span>
-                    </li>
-                    <li>
-                        <button id="buttonReset">Reset</button>
-                    </li>
+                <ul class="scoreboard">
+                    <li class="scoreHeader">Stars</li>
+                    <li class="scoreHeader">Moves</li>
+                    <li class="scoreHeader">Best</li>
+                    <li class="scoreHeader">Timer</li>
+                    <li class="scoreHeader">Best</li>
+                    <li class="score"><span id="stars" class="score">★★★</span></li>
+                    <li class="score"><span id="moves" class="score">0</span></li>
+                    <li class="score"><span id="movesBest" class="score">NA</span></li>
+                    <li class="score"><span id="timer" class="score">0:00</span></li>
+                    <li class="score"><span id="timerBest" class="score">NA</span></li>
                 </ul>
             </section>
             <section class="congratulations displayNone">
                 <button id="buttonNewGame">You won!
                     <br>Star rating: <span id="starsFinal">★★★</span>
-                    <br>Moves: <span id="movesFinal" class="scoreboard">0</span>
-                    <br>Time Elapsed: <span id="timerFinal" class="scoreboard">0:00</span>
+                    <br>Moves: <span id="movesFinal">0</span>
+                    <br>Time Elapsed: <span id="timerFinal">0:00</span>
                     <br>Click here to play again</button>
             </section>
             <ul class="deck">
