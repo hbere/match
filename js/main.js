@@ -19,6 +19,7 @@ let deck = [
 ];
 let clickState = 0;
 let guessCounter = 0;
+let timer, timerSecondsBest = 99999, timerSeconds = 0;
 
 // TODO hide the button until it is ready to call a new game
 
@@ -71,12 +72,22 @@ function flipCard() {
         card.classList.remove("matched");
       }, 300);
     }
-    // Update scoreboard if new personal best achieved
+    // Update moves scoreboard if new personal best achieved
     if (
-      guessCounter < document.getElementById("personalBest").textContent ||
-      document.getElementById("personalBest").textContent == "NA"
+      guessCounter < document.getElementById("movesBest").textContent ||
+      document.getElementById("movesBest").textContent == "NA"
     ) {
-      document.getElementById("personalBest").textContent = guessCounter;
+      document.getElementById("movesBest").textContent = guessCounter;
+    }
+    // Stop timer
+    stopTimer();
+    // Update timer scoreboard if new personal best achieved
+    if (
+      timerSeconds < timerSecondsBest ||
+      document.getElementById("timerBest").textContent == "NA"
+    ) {
+      timerSecondsBest = timerSeconds;
+      document.getElementById("timerBest").textContent = document.getElementById("timer").textContent;
     }
   }
 }
@@ -125,6 +136,26 @@ function newGame() {
   clickState = 0;
   guessCounter = 0;
   document.getElementById("moves").textContent = guessCounter;
+  document.getElementById("timer").textContent = "0:00";
+  startTimer();
+}
+
+function startTimer() {
+  // Starts the timer
+  let minutesShown, secondsShown;
+  timer = setInterval(function timerInterval() {
+    timerSeconds++;
+    minutesShown = parseInt(timerSeconds / 60, 10);
+    secondsShown = timerSeconds % 60;
+    secondsShown = secondsShown < 10 ? `0${secondsShown}` : secondsShown;
+    document.getElementById("timer").textContent = `${minutesShown}:${secondsShown}`;
+  }, 1000);
+}
+
+function stopTimer() {
+  // Stops the timer
+  clearTimeout(timer);
+  timerSeconds = 0;
 }
 
 function flipAllCardsFacedown() {
@@ -159,6 +190,7 @@ function shuffle(array) {
     [array[randIndex], array[index]] = [array[index], array[randIndex]];
   }
   // Return the shuffled array
+  return array;
 }
 
 function getRandomInt(min, max) {
@@ -173,7 +205,7 @@ function gameComplete() {
   let cards = document.querySelectorAll(".card");
   let matches = document.querySelectorAll(".matched");
   if (cards.length === matches.length) {
-    // Return true if number of cards equals number of matches
+    // Return true if number of cards equals number of matched cards
     return true;
   } else {
     // Else return false
