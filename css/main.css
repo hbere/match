@@ -95,3 +95,14 @@ button:hover {
 /* TODO add card flip animations */
 /* TODO add styles and animations for winning the game */
 
+/* The animation code */
+@keyframes gameWon {
+    from {background-color: green;}
+    to {background-color: lightgreen;}
+}
+
+.gameWon {
+    animation-name: gameWon;
+    animation-duration: 2s;
+    background-color: lightgreen;
+}

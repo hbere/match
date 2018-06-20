@@ -38,6 +38,7 @@ function addCardEventListeners() {
 }
 
 function flipCard() {
+  let cards = document.querySelectorAll(".card");
   // Check if card is still facedown
   if (
     this.classList.contains("clicked") === false &&
@@ -61,8 +62,16 @@ function flipCard() {
   }
   // Check if game is complete
   if (gameComplete() === true) {
+    // Celebratory message
     document.getElementById("gameComplete").textContent =
       "Congratulations, you won!!";
+    // Celebratory animation
+    for (let card of cards) {
+      setTimeout(function() {
+        card.classList.add("gameWon");
+      }, 300);
+    }
+    // Update scoreboard if new personal best achieved
     if (
       guessCounter < document.getElementById("personalBest").textContent ||
       document.getElementById("personalBest").textContent == "NA"
@@ -130,6 +139,7 @@ function flipAllCardsFacedown() {
   for (let card of cards) {
     card.classList.remove("clicked");
     card.classList.remove("matched");
+    card.classList.remove("gameWon");
   }
   return null;
 }
