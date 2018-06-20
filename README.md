@@ -1,25 +1,17 @@
-# Memory Game Project for Udacity Front-End Nanodegree
+# Memory Game Project
 
-_TODO add summary here_
+This is a memory game. 16 cards are dealt, and flip over two at a time to look for a match. You win when you find all 8 matching pairs. Try to win as fast and in as few moves as possible.
+
+I wrote this web application as part of my Udacity Front-End Nanodegree program.
 
 # Quickstart
 
-_TODO add quickstart instructions here_
+Try the game [here](https://hbere.space/memory).
 
-# **Follow this:** Udacity's suggested development order
+To check out how it works, please see the HTML, CSS, and JavaScript files located in [this repository](https://github.com/hbere/memory).
 
-Start by building a very simple grid of cards.
+There are no dependencies. This web application is self-contained.
 
-Don't worry about styling, just get something clickable on the page.
+# License
 
-Figure out the HTML needed to represent a card. Remember, you have to represent two sides of the card. Are you going to have two separate elements stacked on top of each other?
-
-Add the functionality to handle clicks.
-
-This should reveal the hidden side of each card.
-
-Work on the matching logic. How does your game "know" if a player guesses correctly or incorrectly?
-
-Work on the winning condition. How does your game “know” if a player has won?
-
-We recommend saving styling until the very end. Allow your game logic and functionality to dictate the styling.
+The content of this repository is licensed according to the [license listed here](https://github.com/hbere/memory/blob/master/LICENSE).
