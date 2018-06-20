@@ -156,6 +156,6 @@ button:hover {
   background-color: cornflowerblue;
 }
 
-.fontSize1em {
-  font-size: 1em;
+.fontSizeSmaller {
+  font-size: 0.8em;
 }
