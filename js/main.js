@@ -18,8 +18,11 @@ let deck = [
   "♧"
 ];
 let clickState = 0;
+let stars = "★★★";
 let guessCounter = 0;
-let timer, timerSecondsBest = 99999, timerSeconds = 0;
+let timer,
+  timerSecondsBest = 99999,
+  timerSeconds = 0;
 
 // Initialize game after DOM loads
 document.addEventListener("DOMContentLoaded", function() {
@@ -54,6 +57,13 @@ function flipCard() {
       clickState++;
       flipNonMatches();
       guessCounter++;
+      if (guessCounter === 20) {
+        stars = "★★";
+        document.getElementById("stars").textContent = stars;
+      } else if (guessCounter === 32) {
+        stars = "★";
+        document.getElementById("stars").textContent = stars;
+      }
       document.getElementById("moves").textContent = guessCounter;
     }
   } else {
@@ -63,6 +73,13 @@ function flipCard() {
   // Check if game is complete
   if (gameComplete() === true) {
     // Celebratory message
+    document.getElementById("starsFinal").textContent = document.getElementById(
+      "stars"
+    ).textContent;
+    document.getElementById("movesFinal").textContent = guessCounter;
+    document.getElementById("timerFinal").textContent = document.getElementById(
+      "timer"
+    ).textContent;
     document.querySelector(".congratulations").classList.remove("displayNone");
     // Celebratory animation
     for (let card of cards) {
@@ -86,7 +103,9 @@ function flipCard() {
       document.getElementById("timerBest").textContent == "NA"
     ) {
       timerSecondsBest = timerSeconds;
-      document.getElementById("timerBest").textContent = document.getElementById("timer").textContent;
+      document.getElementById(
+        "timerBest"
+      ).textContent = document.getElementById("timer").textContent;
     }
   }
 }
@@ -135,6 +154,7 @@ function newGame() {
   deal(deck);
   flipAllCardsFacedown();
   clickState = 0;
+  stars = "★★★"
   guessCounter = 0;
   document.getElementById("moves").textContent = guessCounter;
   document.getElementById("timer").textContent = "0:00";
@@ -149,7 +169,9 @@ function startTimer() {
     minutesShown = parseInt(timerSeconds / 60, 10);
     secondsShown = timerSeconds % 60;
     secondsShown = secondsShown < 10 ? `0${secondsShown}` : secondsShown;
-    document.getElementById("timer").textContent = `${minutesShown}:${secondsShown}`;
+    document.getElementById(
+      "timer"
+    ).textContent = `${minutesShown}:${secondsShown}`;
   }, 1000);
 }
 
