@@ -63,12 +63,12 @@ function flipCard() {
   // Check if game is complete
   if (gameComplete() === true) {
     // Celebratory message
-    document.getElementById("gameComplete").textContent =
-      "Congratulations, you won!!";
+    document.querySelector(".congratulations").classList.remove("displayNone");
     // Celebratory animation
     for (let card of cards) {
       setTimeout(function() {
         card.classList.add("gameWon");
+        card.classList.remove("matched");
       }, 300);
     }
     // Update scoreboard if new personal best achieved
@@ -79,13 +79,11 @@ function flipCard() {
       document.getElementById("personalBest").textContent = guessCounter;
     }
   }
-  return null;
 }
 
 function flipNonMatches() {
   // Add event listener to each card;
   let cardsClicked = document.querySelectorAll(".clicked");
-  console.log(cardsClicked);
   let tempValues = [],
     match;
   // Get list of matched numbers
@@ -110,14 +108,12 @@ function flipNonMatches() {
     }
   }
   clickState = 0;
-  return null;
 }
 
 function addButtonClickEventListener(buttonID, myFunctionName) {
   // Adds event listener calling myFunctionName every time buttonID is clicked
   let myButton = document.querySelector(`#${buttonID}`);
   myButton.addEventListener("click", myFunctionName);
-  return null;
 }
 
 function newGame() {
@@ -129,8 +125,6 @@ function newGame() {
   clickState = 0;
   guessCounter = 0;
   document.getElementById("moves").textContent = guessCounter;
-  document.getElementById("gameComplete").textContent = "";
-  return null;
 }
 
 function flipAllCardsFacedown() {
@@ -141,7 +135,7 @@ function flipAllCardsFacedown() {
     card.classList.remove("matched");
     card.classList.remove("gameWon");
   }
-  return null;
+  document.querySelector(".congratulations").classList.add("displayNone");
 }
 
 function deal(array) {
@@ -152,7 +146,6 @@ function deal(array) {
     card.textContent = array[i];
     i++;
   }
-  return null;
 }
 
 function shuffle(array) {
@@ -166,7 +159,6 @@ function shuffle(array) {
     [array[randIndex], array[index]] = [array[index], array[randIndex]];
   }
   // Return the shuffled array
-  return null;
 }
 
 function getRandomInt(min, max) {
