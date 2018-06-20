@@ -26,7 +26,7 @@ let timer, timerSecondsBest = 99999, timerSeconds = 0;
 // Initialize game after DOM loads
 document.addEventListener("DOMContentLoaded", function() {
   addButtonClickEventListener("buttonNewGame", newGame);
-  addButtonClickEventListener("buttonRestart", newGame);
+  addButtonClickEventListener("buttonReset", newGame);
   newGame();
 });
 
