@@ -1,4 +1,4 @@
-# Memory Game Project
+# About
 
 This is a memory game. 16 cards are dealt, and flip over two at a time to look for a match. You win when you find all 8 matching pairs. Try to win as fast and in as few moves as possible.
 
