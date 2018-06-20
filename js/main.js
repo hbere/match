@@ -21,8 +21,6 @@ let clickState = 0;
 let guessCounter = 0;
 let timer, timerSecondsBest = 99999, timerSeconds = 0;
 
-// TODO hide the button until it is ready to call a new game
-
 // Initialize game after DOM loads
 document.addEventListener("DOMContentLoaded", function() {
   addButtonClickEventListener("buttonNewGame", newGame);
@@ -60,7 +58,7 @@ function flipCard() {
     }
   } else {
     // Error handling
-    console.log(`Error: clickstate of ${clickState} or greater.`);
+    console.log(`Error: clickstate of ${clickState}.`);
   }
   // Check if game is complete
   if (gameComplete() === true) {
