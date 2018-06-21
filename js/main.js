@@ -31,98 +31,43 @@ function addCardEventListeners() {
   }
 }
 
-// TODO shrink the size of this function; split into smaller, more maintainable pieces
-
 function flipCard() {
   let cards = document.querySelectorAll(".card");
-  // Check if card is still facedown
-  if (
-    this.classList.contains("clicked") === false &&
-    this.classList.contains("matched") === false
-  ) {
+  // If card is currently facedown, flip it
+  if (cardIsFacedown(this) === true) {
     if (clickState === 0) {
-      // First facedown card clicked
-      this.classList.toggle("clicked");
-      clickState++;
+      flipFirstFacedownCard(this);
     } else if (clickState === 1) {
-      // Second facedown card clicked
-      this.classList.toggle("clicked");
-      clickState++;
-      flipNonMatches();
-      guessCounter++;
-      if (guessCounter === 20) {
-        stars = "★★";
-        document.getElementById("stars").textContent = stars;
-      } else if (guessCounter === 32) {
-        stars = "★";
-        document.getElementById("stars").textContent = stars;
-      }
-      document.getElementById("moves").textContent = guessCounter;
+      flipSecondFacedownCard(this);
     }
-  } else {
-    // Error handling
-    console.log(`Error: clickstate of ${clickState}.`);
   }
-  // Check if game is complete
+  // If game is complete, celebrate, update scoreboard, stop timer, etc.
   if (gameComplete() === true) {
-    // Celebratory message
-    document.getElementById("starsFinal").textContent = document.getElementById(
-      "stars"
-    ).textContent;
-    document.getElementById("movesFinal").textContent = guessCounter;
-    document.getElementById("timerFinal").textContent = document.getElementById(
-      "timer"
-    ).textContent;
-    document.querySelector(".congratulations").classList.remove("displayNone");
-    // Celebratory animation
-    for (let card of cards) {
-      setTimeout(() => {
-        card.classList.add("gameWon");
-        card.classList.remove("matched");
-      }, 300);
-    }
-    // Update moves scoreboard if new personal best achieved
-    if (
-      guessCounter < document.getElementById("movesBest").textContent ||
-      document.getElementById("movesBest").textContent == "NA"
-    ) {
-      document.getElementById("movesBest").textContent = guessCounter;
-    }
-    // Update timer scoreboard if new personal best achieved
-    if (
-      timerSeconds < timerSecondsBest ||
-      document.getElementById("timerBest").textContent == "NA"
-    ) {
-      timerSecondsBest = timerSeconds;
-      document.getElementById(
-        "timerBest"
-      ).textContent = document.getElementById("timer").textContent;
-    }
-    // Stop timer
-    stopTimer();
+    gameCompleteCelebration();
+    updateScoreboardRecords();
+    stopTimer(); // Stop timer
   }
 }
 
 function flipNonMatches() {
-  // Add event listener to each card;
   let cardsClicked = document.querySelectorAll(".clicked");
   let tempValues = [],
     match;
-  // Get list of matched numbers
+  // Read values of the last two flipped cards
   for (let card of cardsClicked) {
     tempValues.push(card.textContent);
   }
-  // Flip non-matches facedown
+  // Compare values of the last two flipped cards
   match = tempValues[0] === tempValues[1];
   if (match) {
-    // If match
+    // If they match, keep the cards showing
     for (let card of cardsClicked) {
       card.classList.remove("clicked");
       card.classList.add("matched");
       card.removeEventListener("click", flipCard);
     }
   } else {
-    // If not a match
+    // Otherwise, flip them back over
     for (let card of cardsClicked) {
       setTimeout(() => {
         card.classList.remove("clicked");
@@ -130,6 +75,79 @@ function flipNonMatches() {
     }
   }
   clickState = 0;
+}
+
+function cardIsFacedown(card) {
+  // Returns true if card is facedown otherwise false
+  if (
+    card.classList.contains("clicked") === false &&
+    card.classList.contains("matched") === false
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function flipFirstFacedownCard(card) {
+  // First facedown card clicked
+  card.classList.toggle("clicked");
+  clickState++;
+}
+
+function flipSecondFacedownCard(card) {
+  // Second facedown card clicked
+  card.classList.toggle("clicked");
+  clickState++;
+  flipNonMatches();
+  guessCounter++;
+  if (guessCounter === 20) {
+    stars = "★★";
+    document.getElementById("stars").textContent = stars;
+  } else if (guessCounter === 32) {
+    stars = "★";
+    document.getElementById("stars").textContent = stars;
+  }
+  document.getElementById("moves").textContent = guessCounter;
+}
+
+function gameCompleteCelebration() {
+  // Add game stats to celebratory message
+  document.getElementById("starsFinal").textContent = document.getElementById(
+    "stars"
+  ).textContent;
+  document.getElementById("movesFinal").textContent = guessCounter;
+  document.getElementById("timerFinal").textContent = document.getElementById(
+    "timer"
+  ).textContent;
+  document.querySelector(".congratulations").classList.remove("displayNone");
+  // Run celebratory animation
+  for (let card of cards) {
+    setTimeout(() => {
+      card.classList.add("gameWon");
+      card.classList.remove("matched");
+    }, 300);
+  }
+}
+
+function updateScoreboardRecords() {
+  // Update moves scoreboard if new personal best achieved
+  if (
+    guessCounter < document.getElementById("movesBest").textContent ||
+    document.getElementById("movesBest").textContent == "NA"
+  ) {
+    document.getElementById("movesBest").textContent = guessCounter;
+  }
+  // Update timer scoreboard if new personal best achieved
+  if (
+    timerSeconds < timerSecondsBest ||
+    document.getElementById("timerBest").textContent == "NA"
+  ) {
+    timerSecondsBest = timerSeconds;
+    document.getElementById("timerBest").textContent = document.getElementById(
+      "timer"
+    ).textContent;
+  }
 }
 
 function addButtonClickEventListener(buttonID, myFunctionName) {
