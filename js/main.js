@@ -88,8 +88,6 @@ function flipCard() {
     ) {
       document.getElementById("movesBest").textContent = guessCounter;
     }
-    // Stop timer
-    stopTimer();
     // Update timer scoreboard if new personal best achieved
     if (
       timerSeconds < timerSecondsBest ||
@@ -100,6 +98,8 @@ function flipCard() {
         "timerBest"
       ).textContent = document.getElementById("timer").textContent;
     }
+    // Stop timer
+    stopTimer();
   }
 }
 
