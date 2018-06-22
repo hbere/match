@@ -122,9 +122,11 @@ ul {
 .congratulations {
   text-align: center;
   width: 100%;
-  position: relative;
-  bottom: -105px;
+  position: fixed;
+  top: 231px;
+  left: 0;
   height: 0px;
+  z-index: 1;
 }
 
 .displayNone {
