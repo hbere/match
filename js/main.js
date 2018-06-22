@@ -43,7 +43,7 @@ function flipCard() {
   }
   // If game is complete, celebrate, update scoreboard, stop timer, etc.
   if (gameComplete() === true) {
-    gameCompleteCelebration();
+    gameCompleteCelebration(cards);
     updateScoreboardRecords();
     stopTimer(); // Stop timer
   }
@@ -111,7 +111,7 @@ function flipSecondFacedownCard(card) {
   document.getElementById("moves").textContent = guessCounter;
 }
 
-function gameCompleteCelebration() {
+function gameCompleteCelebration(cards) {
   // Add game stats to celebratory message
   document.getElementById("starsFinal").textContent = document.getElementById(
     "stars"
