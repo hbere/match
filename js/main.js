@@ -28,6 +28,8 @@ function addCardEventListeners() {
   for (let card of cards) {
     // TODO add code to ensure duplicate event listeners not added
     card.addEventListener("click", flipCard);
+    // TODO enable flipping cards by tabbing and hitting space bar
+    // card.addEventListener("keydown", flipCard);
   }
 }
 
